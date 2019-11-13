@@ -1,0 +1,57 @@
+<html>
+<body onkeydown='k(event)'><canvas width='80' height='80' id='h' style='background-color:black;'>
+</canvas>
+</body>
+</html>
+
+<script>
+e=setInterval(z,200);
+d=document.getElementById('h').getContext('2d');
+x=0;
+y=0;
+o=r();
+u=r();
+p=[];
+q=[];
+a=1;
+b=0;
+function z(){
+d.fillStyle='white';
+d.clearRect(0,0,80,80);
+x+=8*a;
+y+=8*b;
+if(x>72){x=0};
+if(x<0){x=72};
+if(y<0){y=72};
+if(y>72){y=0};
+if((o==x)&&(u==y)){
+o=r();
+u=r();
+p.push(r());
+q.push(r());
+}
+for(var i=0;i<p.length;i++){
+if((o==p[i])&&(u==q[i])){
+o=r();
+u=r();
+}
+d.fillRect(p[i],q[i],8,8);
+if((x==p[i])&&(y==q[i])){
+clearInterval(e);
+}
+}
+d.fillRect(o+2,u+2,4,4);
+d.fillRect(x,y,8,8);
+}
+function r(){return Math.floor(Math.random()*10)*8}
+function k(event){
+a=0;
+b=0;
+switch(event.which||event.keyCode){
+case 39:a=1;break;
+case 40:b=1;break;
+case 37:a=-1;break;
+case 38:b=-1;
+}
+}
+</script>
